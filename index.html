@@ -12,6 +12,9 @@
     <link rel="shortcut icon" href="lib/logo.png">
     <script src="lib/jquery.min.js"></script>
     <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <div style="display:none;">
+        <img src="lib/img/thumb.png" alt="">
+    </div>
     <style>
     html {
         background-image: url('lib/img/bg.png');
@@ -32,11 +35,11 @@
     
     #header {
         position: relative;
-        margin-bottom: -10px;
+        margin-bottom: -24px;
     }
     
     #content {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
         z-index: 999;
     }
     
@@ -176,8 +179,9 @@
         <img src="lib/img/circle700.gif" alt="" style="width:76%;left:12%;position:absolute;top:30px;z-index:99;opacity:0;" id="circle">
         <img src="lib/img/moon.png" alt="" style="width:38%;left:31%;position:absolute;z-index:98;opacity:0;" id="moon">
         
-        <img src="lib/img/title.png" alt="" style="width:70%;margin-left:15%;margin-right:15%;opacity:0;position:relative;top:-12px;" id="title">
+        <img src="lib/img/title.png" alt="" style="width:70%;margin-left:15%;margin-right:15%;opacity:0;position:relative;top:-24px;" id="title">
         <img src="lib/img/leaf_left.png" alt="" style="width:24%;position:absolute;bottom:-80px;left:0;">
+        <img src="lib/img/leaf_right.png" alt="" style="width:18%;position:absolute;bottom:-140px;right:0;">
         <img src="lib/img/cloud1.png" alt="" id="cloud1" style="width:25%;position:absolute;left:-25%;z-index:10;opacity:0;">
         <img src="lib/img/cloud2.png" alt="" id="cloud2" style="width:10%;position:absolute;right:-10%;z-index:10;opacity:0;">
         <img src="lib/img/xiaoD.png" alt="" id="xiaoD" style="width:30%;position:absolute;right:-30%;z-index:111;">
@@ -226,7 +230,6 @@
 </body>
 <script>
 $(document).ready(function() {
-    $('#layer').css('height', 40 + $('#circle').width());
 
     $('#moon').css('top', 30 + $('#circle').width() * 0.252).animate({
         opacity: 1,
