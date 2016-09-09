@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DT财经－你竟是这样的月饼？</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="lib/logo.png">
+    <script src="lib/jquery.min.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <style>
+    html,
+    body {
+        /*font-family: OpenSans-Light, PingFang SC, Hiragino Sans GB, Microsoft Yahei, Microsoft Jhenghei, sans-serif;*/
+        font-family: Microsoft Yahei;
+        -webkit-font-smoothing: antialiased;
+        background-image: url('lib/img/bg.png');
+        background-size: cover;
+        background-position: bottom;
+        background-attachment: fixed;
+        color: #fff;
+        width: 100%;
+    }
+    #result {
+        padding-top: 15px;
+        text-align: center;
+        z-index: 99;
+    }
+    #result p {
+        font-size: 14px;
+        text-shadow: 2px 2px 2px rgba(20, 20, 20, 0.8);
+        margin-bottom: 2px;
+        color: #eee;
+    }
+    #result p span {
+        font-weight: bold;
+    }
+    #header {
+        position: relative;
+        margin-top: -15px;
+        margin-bottom: -10px;
+    }
+    
+    #content {
+        margin-bottom: 60px;
+        z-index: 999;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    #content p {
+        font-family: Microsoft Yahei;
+        font-size: 14px;
+        text-shadow: 2px 2px 2px rgba(20, 20, 20, 0.8);
+        margin-bottom: 12px;
+        color: #eee;
+    }
+    #content .btn {
+        display: block;
+        width: 50%;
+        margin: 8px auto;
+        z-index: 999;
+        box-shadow: 1px 1px 1px rgba(20, 20, 20, 0.4);
+        padding: 8px;
+        color: #555;
+        background-color: #f2f2f2;
+    }
+    #content .btn:hover {
+        background-color: #f2f2f2;
+    }
+    </style>
+</head>
+
+<body>
+    <img src="lib/img/share.png" alt="" style="position:fixed;top:12px;right:12px;opacity:0;width:75px" id="share_img">
+    <div id="result">
+        <p>来自 <span id="star" style="color:rgb(254,232,58);"></span> 星座的</p>
+        <p><span id="name" style="color:rgb(254,232,58);"></span></p>
+        <p>我们发现最适合你的是这款</p>
+        <p><span id="cake" style="color:rgb(254,232,58);font-size:20px;"></span></p>
+    </div>    
+    <div id="header">
+        <img src="lib/img/layer2.png" alt="" style="width:100%;z-index:-1;opacity:0.3" id="layer">
+        <img src="lib/img/circle700.gif" alt="" style="width:76%;margin-left:12%;margin-right:12%;position:absolute;top:30px;z-index:99;opacity:0;" id="circle">
+        <img src="" alt="" style="width:40%;margin-left:30%;margin-right:30%;position:absolute;z-index:98;opacity:0;" id="moon">
+        <img src="lib/img/leaf_left.png" alt="" style="width:22%;position:absolute;bottom:-135px;left:0;">
+        <img src="lib/img/cloud1.png" alt="" id="cloud1" style="width:25%;position:absolute;left:-25%;z-index:10;opacity:0;">
+        <img src="lib/img/cloud2.png" alt="" id="cloud2" style="width:10%;position:absolute;right:-10%;z-index:10;opacity:0;">
+        <img src="lib/img/cloud3.png" alt="" id="cloud3" style="width:30%;position:absolute;right:-30%;z-index:10;opacity:0;">
+    </div>
+    <div id="content">
+        <p id="description">这里是描述</p>
+        <a href="index.html" class="btn btn-default">再测一次</a>
+        <span class="btn btn-default" id="share">点击分享到朋友圈</span>
+        <img src="lib/img/power.png" alt="" style="width:20%;margin-top:10px;">
+    </div>
+</body>
+<script>
+$(document).ready(function() {
+    var url = window.location.href;
+    var name = '';
+    var star = '';
+    var cake = '';
+    url = url.substr(url.indexOf('cake.html') + 9).split('&');
+    name = decodeURI(url[0].substr(6));
+    star = decodeURI(url[1].substr(5));
+    cake = decodeURI(url[2].substr(5));
+    $('#name').text(name);
+    $('#star').text(star);
+    $('#cake').text(cake);
+    $('#moon').attr('src', 'lib/img/cakes/' + cake + '.png');
+
+    $('#layer').css('height', 40 + $('#circle').width());
+
+    $('#moon').css('top', 30 + $('#circle').width() * 0.25).animate({
+        opacity: 1,
+        top: 20 + $('#circle').width() * 0.25
+    }, 600);
+    $('#circle').animate({
+        opacity: 1,
+        top: 20
+    }, 600);
+
+    setTimeout(function() {
+        $('#cloud1').css('top', 20 + $('#circle').width() * 0.6).animate({
+            left: 0,
+            opacity: 1
+        }, 600);
+        $('#cloud2').css('top', 20 + $('#circle').width() * 0.1).animate({
+            right: '20%',
+            opacity: 1
+        }, 600);
+        $('#cloud3').css('top', 20 + $('#circle').width() * 0.75).animate({
+            right: '10%',
+            opacity: 1
+        }, 600);
+    }, 400);
+
+    $('#share').click(function(event) {
+        $('#share_img').css('opacity', 1);
+    });
+});
+</script>
+
+</html>
