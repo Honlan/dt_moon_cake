@@ -13,16 +13,19 @@
     <script src="lib/jquery.min.js"></script>
     <link rel="stylesheet" href="lib/bootstrap.min.css">
     <style>
-    html,
+    html {
+        background-image: url('lib/img/bg.png');
+        background-size: 100% 100%;
+        min-height: 100%;
+    }
     body {
         /*font-family: OpenSans-Light, PingFang SC, Hiragino Sans GB, Microsoft Yahei, Microsoft Jhenghei, sans-serif;*/
         font-family: Microsoft Yahei;
         -webkit-font-smoothing: antialiased;
-        background-image: url('lib/img/bg.png');
-        background-size: cover;
-        background-position: bottom;
-        background-attachment: fixed;
-        background-repeat: no-repeat;
+        background: transparent;
+        /*background-position: bottom;*/
+        /*background-attachment: fixed;*/
+        /*background-repeat: no-repeat;*/
         color: #fff;
         width: 100%;
     }
