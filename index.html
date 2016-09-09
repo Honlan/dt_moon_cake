@@ -39,7 +39,7 @@
     }
     
     #content {
-        margin-bottom: 20px;
+        margin-bottom: 40px;
         z-index: 999;
     }
     
@@ -105,6 +105,20 @@
         width: 100%;
         display: none;
         z-index: 999;
+    }
+
+    #content .btn {
+        display: block;
+        width: 50%;
+        margin: 8px auto;
+        z-index: 999;
+        box-shadow: 1px 1px 1px rgba(20, 20, 20, 0.4);
+        padding: 8px;
+        color: #555;
+        background-color: #f2f2f2;
+    }
+    #content .btn:hover {
+        background-color: #f2f2f2;
     }
     
     @keyframes come {
@@ -226,6 +240,7 @@
                 <div class="cell" name="西南">西南</div>
             </div>
         </div>
+        <button class="btn btn-default disabled" id="begin">开始测试</button>
     </div>
 </body>
 <script>
@@ -286,8 +301,13 @@ $(document).ready(function() {
     var area = '';
 
     $('input[name="name"]').keyup(function(event) {
-        if ($(this).val() != '') {
-            name = $(this).val();
+        name = $(this).val();
+        
+        if (name != '' && gender != '' && star != '' && area != '') {
+            $('#begin').removeClass('disabled');
+        }
+        else {
+            $('#begin').addClass('disabled');
         }
     });
 
@@ -318,9 +338,17 @@ $(document).ready(function() {
         select = '';
         selecting = false;
         name = $('input[name="name"]').val();
+
         if (name != '' && gender != '' && star != '' && area != '') {
-            calculate();
+            $('#begin').removeClass('disabled');
         }
+        else {
+            $('#begin').addClass('disabled');
+        }
+    });
+
+    $('#begin').click(function(event) {
+        calculate();
     });
 
     function calculate(){
