@@ -85,7 +85,7 @@
 
 <body>
     <div id="result">
-        <p>来自 <span id="star" style="color:rgb(254,232,58);"></span> 星座的 <span id="name" style="color:rgb(254,232,58);"></span></p>
+        <p>来自 <span id="star" style="color:rgb(254,232,58);"></span> 的 <span id="name" style="color:rgb(254,232,58);"></span></p>
         <p>我们发现最适合你的是这款</p>
         <p><span id="cake" style="color:rgb(254,232,58);font-size:16px;"></span></p>
     </div>    
@@ -137,10 +137,10 @@ $(document).ready(function() {
     star = decodeURI(url[1].substr(5));
     cake = decodeURI(url[2].substr(5));
     $('#name').text(name);
-    $('#star').text(star);
+    $('#star').text(star + '座');
     $('#cake').text(cake);
     $('#moon').attr('src', 'lib/img/cakes/' + cake + '.png');
-    $('title').text("我最配" + cake + "，看看你是哪款月饼");
+    $('title').text("数据显示我最配" + cake + "，快来测你是怎样的月饼！");
 
     // $('#layer').css('height', 40 + $('#circle').width());
 

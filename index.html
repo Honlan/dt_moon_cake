@@ -11,6 +11,7 @@
     <meta name="author" content="" />
     <link rel="shortcut icon" href="lib/logo.png">
     <script src="lib/jquery.min.js"></script>
+    <script src="lib/jquerySession.js"></script>
     <link rel="stylesheet" href="lib/bootstrap.min.css">
     <div style="display:none;">
         <img src="lib/img/thumb.png" alt="">
@@ -208,14 +209,14 @@
         </div>
         <div style="position:relative;" id="gender">
             <input type="text" name="gender" placeholder="性别" class="form-control select" readOnly="true">
-            <div class="div">
+            <div class="div" name="gender">
                 <div class="cell" name="男">男</div>
                 <div class="cell" name="女">女</div>
             </div>
         </div>
         <div style="position:relative;" id="star">
             <input type="text" name="star" placeholder="星座" class="form-control select" readOnly="true">
-            <div class="div">
+            <div class="div" name="star">
                 <div class="cell" name="双子">双子</div>
                 <div class="cell" name="双鱼">双鱼</div>
                 <div class="cell" name="处女">处女</div>
@@ -232,7 +233,7 @@
         </div>
         <div style="position:relative;" id="area">
             <input type="text" name="area" placeholder="地域" class="form-control select" readOnly="true">
-            <div class="div">
+            <div class="div" name="area">
                 <div class="cell" name="东北">东北</div>
                 <div class="cell" name="华东">华东</div>
                 <div class="cell" name="华中">华中</div>
@@ -297,13 +298,21 @@ $(document).ready(function() {
     var selecting = false;
     var select;
 
-    var name = '';
-    var gender = '';
-    var star = '';
-    var area = '';
+    var name = $.session.get('name');
+    var gender = $.session.get('gender');
+    var star = $.session.get('star');
+    var area = $.session.get('area');
+
+    if (name != '' && gender != '' && star != '' && area != '') {
+        $('#begin').removeClass('disabled');
+    }
+    else {
+        $('#begin').addClass('disabled');
+    }
 
     $('input[name="name"]').keyup(function(event) {
         name = $(this).val();
+        $.session.set('name', 'name');
 
         if (name != '' && gender != '' && star != '' && area != '') {
             $('#begin').removeClass('disabled');
@@ -328,6 +337,9 @@ $(document).ready(function() {
         event.preventDefault();
         $(this).parent('div.div').hide();
         var tmp = $(this).attr('name');
+
+        $.session.set($(this).parent('div').attr('name'), tmp);
+
         $('.select').removeClass('active');
         $('.select[name="' + select + '"]').val(tmp);
         if (select == 'gender') {
