@@ -297,18 +297,22 @@ $(document).ready(function() {
     var selecting = false;
     var select;
 
-    var name = $.session.get('name');
-    var gender = $.session.get('gender');
-    var star = $.session.get('star');
-    var area = $.session.get('area');
+    // var name = $.session.get('name');
+    // var gender = $.session.get('gender');
+    // var star = $.session.get('star');
+    // var area = $.session.get('area');
+    // $('input[name="name"]').val(name);
+    // $('.select[name="gender"]').val(gender);
+    // $('.select[name="star"]').val(star);
+    // $('.select[name="area"]').val(area);
+    var name = '';
+    var gender = '';
+    var star = '';
+    var area = '';
     $('input[name="name"]').val(name);
     $('.select[name="gender"]').val(gender);
     $('.select[name="star"]').val(star);
     $('.select[name="area"]').val(area);
-    console.log(name);
-    console.log(gender);
-    console.log(star);
-    console.log(area);
 
     if (name != '' && gender != '' && star != '' && area != '') {
         $('#begin').removeClass('disabled');
