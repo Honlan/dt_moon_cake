@@ -80,6 +80,9 @@
     #content .btn:hover {
         background-color: #f2f2f2;
     }
+    #stat span {
+        color: rgb(254,232,58);
+    }
     </style>
 </head>
 
@@ -100,7 +103,8 @@
         <img src="lib/img/cloud3.png" alt="" id="cloud3" style="width:30%;position:absolute;right:-30%;z-index:10;opacity:0;">
     </div>
     <div id="content">
-        <p id="description" style="width:80%;margin-left:10%;margin-right:10%;text-indent:0em;font-size:13px;text-align:left;"></p>
+        <p id="description" style="width:80%;margin-left:10%;margin-right:10%;text-indent:0em;font-size:13px;text-align:left;margin-bottom:3px;"></p>
+        <p id="stat" style="width:80%;margin-left:10%;margin-right:10%;text-indent:0em;font-size:13px;text-align:left;"></p>
         <a href="index.html" class="btn btn-default">再测一次</a>
         <button class="btn btn-default" id="share">点击分享到朋友圈</button>
         <img src="lib/img/power.png" alt="" style="width:60%;margin-top:4px;">
@@ -115,8 +119,10 @@ $(document).ready(function() {
     var name = '';
     var star = '';
     var cake = '';
+    var area = '';
 
     var model;
+    var stat;
 
     $.ajax({
             url: 'lib/cake.json',
@@ -131,11 +137,35 @@ $(document).ready(function() {
         .fail(function() {})
         .always(function() {});
 
+    $.ajax({
+            url: 'lib/area.json',
+            type: 'GET',
+            dataType: 'json',
+            data: {},
+        })
+        .done(function(data) {
+            stat = data;
+            var p = stat[cake][area];
+            var r = Math.random();
+            if (r <= 0.33) {
+                $('#stat').html('数据显示，<span>' + area + '地区</span>有<span>' + p + '</span>的人和你一样钟爱这款月饼哦！');
+            }
+            else if (r <= 0.66) {
+                $('#stat').html('数据显示，<span>' + area + '地区</span>有<span>' + p + '</span>童鞋和你有一样的选择!');
+            }
+            else {
+                $('#stat').html('数据显示，来自<span>' + area + '地区</span>的你，有<span>' + p + '</span>的人和你选择了同一款月饼。');
+            }
+        })
+        .fail(function() {})
+        .always(function() {});
+
     var sharing =  false;
     url = url.substr(url.indexOf('cake.html') + 9).split('&');
     name = decodeURI(url[0].substr(6));
     star = decodeURI(url[1].substr(5));
-    cake = decodeURI(url[2].substr(5));
+    area = decodeURI(url[2].substr(5));
+    cake = decodeURI(url[3].substr(5));
     $('#name').text(name);
     $('#star').text(star + '座');
     $('#cake').text(cake);
