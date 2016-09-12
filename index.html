@@ -36,7 +36,6 @@
     
     #header {
         position: relative;
-        margin-bottom: -24px;
     }
     
     #content {
@@ -191,12 +190,12 @@
 
 <body>
     <div id="header">
-        <img src="lib/img/layer.png" alt="" style="width:100%;opacity:0.3" id="layer">
+        <img src="lib/img/layer.png" alt="" style="width:100%;opacity:0.3;margin-bottom:-20px;" id="layer">
         
         <img src="lib/img/circle700.gif" alt="" style="width:76%;left:12%;position:absolute;top:30px;z-index:99;opacity:0;" id="circle">
         <img src="lib/img/moon.png" alt="" style="width:38%;left:31%;position:absolute;z-index:98;opacity:0;" id="moon">
         
-        <img src="lib/img/title.png" alt="" style="width:70%;margin-left:15%;margin-right:15%;opacity:0;position:relative;top:-24px;" id="title">
+        <img src="lib/img/title.png" alt="" style="width:70%;margin-left:15%;margin-right:15%;opacity:0;position:relative;" id="title">
         <img src="lib/img/leaf_left.png" alt="" style="width:24%;position:absolute;bottom:-80px;left:0;">
         <img src="lib/img/leaf_right.png" alt="" style="width:18%;position:absolute;bottom:-140px;right:0;">
         <img src="lib/img/cloud1.png" alt="" id="cloud1" style="width:25%;position:absolute;left:-25%;z-index:10;opacity:0;">
@@ -302,6 +301,14 @@ $(document).ready(function() {
     var gender = $.session.get('gender');
     var star = $.session.get('star');
     var area = $.session.get('area');
+    $('input[name="name"]').val(name);
+    $('.select[name="gender"]').val(gender);
+    $('.select[name="star"]').val(star);
+    $('.select[name="area"]').val(area);
+    console.log(name);
+    console.log(gender);
+    console.log(star);
+    console.log(area);
 
     if (name != '' && gender != '' && star != '' && area != '') {
         $('#begin').removeClass('disabled');
@@ -312,7 +319,7 @@ $(document).ready(function() {
 
     $('input[name="name"]').keyup(function(event) {
         name = $(this).val();
-        $.session.set('name', 'name');
+        $.session.set('name', name);
 
         if (name != '' && gender != '' && star != '' && area != '') {
             $('#begin').removeClass('disabled');
