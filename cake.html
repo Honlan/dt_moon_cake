@@ -13,7 +13,7 @@
     <script src="lib/jquery.min.js"></script>
     <link rel="stylesheet" href="lib/bootstrap.min.css">
     <div style="display:none;">
-        <img src="lib/img/thumb.png" alt="">
+        <img src="lib/img/thumb.gif" alt="">
     </div>
     <style>
     html {
@@ -178,7 +178,8 @@ $(document).ready(function() {
     $('#name').text(name);
     $('#star').text(star + '座');
     $('#cake').text(cake);
-    $('#moon').attr('src', 'lib/img/cakes/' + cake + '.png');
+    console.log();
+    $('#moon').attr('src', 'lib/img/cakes/' + cake + '.gif');
     $('title').text("数据显示" + name + "最配" + cake + "，快来测你是怎样的月饼！");
 
     // $('#layer').css('height', 40 + $('#circle').width());
