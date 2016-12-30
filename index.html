@@ -190,8 +190,8 @@
 
 <body>
     <div id="header">
-        <div id="layer" style="width:100%;">
-            <img src="lib/img/layer.png" alt="" style="width:100%;margin-bottom:-20px;opacity:0;">
+        <div id="layer" style="width:100%;opacity:0.3;">
+            <img src="lib/img/layer.png" alt="" style="width:100%;margin-bottom:-20px;">
         </div>
         
         <img src="lib/img/circle700.gif" alt="" style="width:76%;left:12%;position:absolute;top:30px;z-index:99;opacity:0;" id="circle">
@@ -249,9 +249,7 @@
 </body>
 <script>
 $(document).ready(function() {
-    $('#layer').css('height', $('#layer').width() * 0.86243).animate({
-        opacity: 0.3
-    }, 600);
+    $('#layer').css('height', $('#layer').width() * 0.86243);
 
     $('#moon').css('top', 30 + $('#circle').width() * 0.252).animate({
         opacity: 1,
