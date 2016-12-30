@@ -138,7 +138,6 @@ $(document).ready(function() {
             data: {},
         })
         .done(function(data) {
-            model = data;
             $('#description').text(model[cake]);
         })
         .fail(function() {})
@@ -176,7 +175,6 @@ $(document).ready(function() {
     $('#name').text(name);
     $('#star').text(star + '座');
     $('#cake').text(cake);
-    console.log();
     $('#moon').attr('src', 'lib/img/cakes/' + cake + '.gif');
     $('title').text("数据显示" + name + "最配" + cake + "，快来测你是怎样的月饼！");
 
